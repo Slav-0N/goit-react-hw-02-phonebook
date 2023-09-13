@@ -1,5 +1,12 @@
-import Form from './Form/Form';
+// import Form from './Form/Form';
+
+import UserList from './UserList/UserList';
 
 export const App = () => {
-  return <Form />;
+  return (
+    <>
+      {/* <Form /> */}
+      <UserList />
+    </>
+  );
 };
