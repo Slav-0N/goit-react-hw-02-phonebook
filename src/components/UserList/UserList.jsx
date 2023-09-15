@@ -1,3 +1,4 @@
+import ContactItem from 'components/ContactItem/ContactItem';
 import FindName from 'components/Find/find';
 import Form from 'components/Form/Form';
 import { Component } from 'react';
@@ -46,7 +47,12 @@ class UserList extends Component {
 
           <h2>Contacts</h2>
           <FindName filterContacts={this.filterContacts} />
-          <ul>
+          <ContactItem
+            filter={this.state.filter}
+            contacts={this.state.contacts}
+            handleDelete={this.handleDelete}
+          />
+          {/* <ul>
             {(this.state.filter ?? this.state.contacts).map(el => {
               console.log(el);
               return (
@@ -60,7 +66,7 @@ class UserList extends Component {
                 </>
               );
             })}
-          </ul>
+          </ul> */}
         </div>
       </>
     );
