@@ -1,11 +1,12 @@
 import React from 'react';
+import FindSection from './Fnd.styled';
 
 const FindName = ({ filterContacts }) => {
   const handleChange = ({ target: { value } }) => {
     filterContacts(value);
   };
   return (
-    <section>
+    <FindSection>
       <label htmlFor="search"> Find </label>
       <input
         id="search"
@@ -16,7 +17,7 @@ const FindName = ({ filterContacts }) => {
         required
         onChange={handleChange}
       />
-    </section>
+    </FindSection>
   );
 };
 

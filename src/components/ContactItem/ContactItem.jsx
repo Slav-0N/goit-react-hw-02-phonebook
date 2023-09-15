@@ -1,8 +1,8 @@
 import React from 'react';
-
+import Contacts from './ContactItem.syled';
 const ContactItem = ({ filter, contacts, handleDelete }) => {
   return (
-    <ul>
+    <Contacts>
       {(filter ?? contacts).map(el => {
         return (
           <li key={el.id}>
@@ -11,7 +11,7 @@ const ContactItem = ({ filter, contacts, handleDelete }) => {
           </li>
         );
       })}
-    </ul>
+    </Contacts>
   );
 };
 

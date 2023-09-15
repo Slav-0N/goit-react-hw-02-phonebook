@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-// import { nanoid } from 'nanoid';
+import SectionForm from './Form.styled';
 
 class Form extends Component {
   state = {
@@ -29,7 +29,7 @@ class Form extends Component {
 
   render() {
     return (
-      <section>
+      <SectionForm>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="name"> Name </label>
@@ -60,7 +60,7 @@ class Form extends Component {
 
           <button type="submit"> Add contact </button>
         </form>
-      </section>
+      </SectionForm>
     );
   }
 }
