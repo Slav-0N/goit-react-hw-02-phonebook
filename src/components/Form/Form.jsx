@@ -1,19 +1,20 @@
 import React from 'react';
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 class Form extends Component {
   state = {
-    id: '',
+    // id: '',
     number: '',
     name: '',
   };
 
-  createId = () => nanoid();
+  // createId = () => nanoid();
 
   handleChange = event => {
     const { value, name } = event.target;
-    this.setState({ [name]: value, id: this.createId() });
+    // this.setState({ [name]: value, id: this.createId() });
+    this.setState({ [name]: value });
   };
 
   handleSubmit = event => {
