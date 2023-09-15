@@ -52,21 +52,6 @@ class UserList extends Component {
             contacts={this.state.contacts}
             handleDelete={this.handleDelete}
           />
-          {/* <ul>
-            {(this.state.filter ?? this.state.contacts).map(el => {
-              console.log(el);
-              return (
-                <>
-                  <li key={el.id}>
-                    {el.name}: {el.number}
-                  </li>
-                  <button onClick={() => this.handleDelete(el.id)}>
-                    Delete{' '}
-                  </button>
-                </>
-              );
-            })}
-          </ul> */}
         </div>
       </>
     );

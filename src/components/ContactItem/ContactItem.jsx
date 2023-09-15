@@ -1,12 +1,6 @@
 import React from 'react';
 
 const ContactItem = ({ filter, contacts, handleDelete }) => {
-  // const handleDelete = id => {
-  //   this.setState(prev => ({
-  //     contacts: prev.contacts.filter(el => el.id !== id),
-  //   }));
-  // };
-
   return (
     <ul>
       {(filter ?? contacts).map(el => {

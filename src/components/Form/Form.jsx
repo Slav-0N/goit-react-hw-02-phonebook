@@ -11,12 +11,7 @@ class Form extends Component {
 
   createId = () => nanoid();
 
-  // handleChange = ({ target: { value } }) => {
-  //   this.setState({ inputValue: value, id: this.createId() });
-  // };
-
   handleChange = event => {
-    // console.log(event);
     const { value, name } = event.target;
     this.setState({ [name]: value, id: this.createId() });
   };
@@ -28,7 +23,6 @@ class Form extends Component {
   };
 
   render() {
-    // console.log('inputValue >>>', this.state.inputValue);
     return (
       <section>
         <form onSubmit={this.handleSubmit}>
