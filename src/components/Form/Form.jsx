@@ -19,8 +19,12 @@ class Form extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+
     this.props.createUser(this.state);
-    this.setState({ name: '' });
+    this.setState({
+      number: '',
+      name: '',
+    });
   };
 
   render() {
@@ -50,7 +54,7 @@ class Form extends Component {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
               onChange={this.handleChange}
-              value={this.state.phoneNumber}
+              value={this.state.number}
             />
           </div>
 
