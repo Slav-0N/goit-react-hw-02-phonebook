@@ -1,4 +1,4 @@
-import FindName from 'components/Form/Find/find';
+import FindName from 'components/Find/find';
 import Form from 'components/Form/Form';
 import { Component } from 'react';
 
@@ -31,24 +31,35 @@ class UserList extends Component {
     }));
   };
 
+  handleDelete = id => {
+    this.setState(prev => ({
+      contacts: prev.contacts.filter(el => el.id !== id),
+    }));
+  };
+
   render() {
     return (
       <>
         <div>
-          <h2>Phonebook</h2>
+          <h1>Phonebook</h1>
           <Form createUser={this.createUser} />
+
           <h2>Contacts</h2>
           <FindName filterContacts={this.filterContacts} />
           <ul>
             {(this.state.filter ?? this.state.contacts).map(el => {
               console.log(el);
               return (
-                <li key={el.id}>
-                  {el.name}: {el.number}
-                </li>
+                <>
+                  <li key={el.id}>
+                    {el.name}: {el.number}
+                  </li>
+                  <button onClick={() => this.handleDelete(el.id)}>
+                    Delete{' '}
+                  </button>
+                </>
               );
             })}
-            {console.log('state--->>>', this.state.contacts)}
           </ul>
         </div>
       </>
