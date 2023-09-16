@@ -1,9 +1,9 @@
 import React from 'react';
 import FindSection from './Fnd.styled';
 
-const FindName = ({ filterContacts }) => {
+const FindName = ({ changeFilterValue, value }) => {
   const handleChange = ({ target: { value } }) => {
-    filterContacts(value);
+    changeFilterValue(value);
   };
   return (
     <FindSection>
@@ -15,6 +15,7 @@ const FindName = ({ filterContacts }) => {
         pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Search name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
+        value={value}
         onChange={handleChange}
       />
     </FindSection>

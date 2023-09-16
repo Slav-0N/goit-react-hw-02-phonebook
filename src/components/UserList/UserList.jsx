@@ -1,4 +1,4 @@
-import ContactItem from 'components/ContactItem/ContactItem';
+import ContactItems from 'components/ContactItem/ContactItem';
 import FindName from 'components/Find/find';
 import Form from 'components/Form/Form';
 import { Component } from 'react';
@@ -7,27 +7,12 @@ import { nanoid } from 'nanoid';
 class UserList extends Component {
   state = {
     contacts: [],
-    filter: null,
+    filter: '',
   };
-
-  // createUser = body => {
-  //   const isExistContact = this.state.contacts.find(
-  //     el => el.name === body.name
-  //   );
-  //   if (isExistContact) return alert('Existing Contact');
-  //   this.setState(prevState => {
-  //     return this.state.contacts.push({
-  //       ...prevState,
-  //       name: body.name,
-  //       id: body.id,
-  //       number: body.number,
-  //     });
-  //   });
-  // };
 
   createUser = body => {
     const isExistContact = this.state.contacts.find(
-      el => el.name === body.name
+      el => el.name.toLowerCase() === body.name.toLowerCase()
     );
 
     if (isExistContact) return alert('Existing Contact');
@@ -42,12 +27,8 @@ class UserList extends Component {
     }));
   };
 
-  filterContacts = filterQuery => {
-    this.setState(prev => ({
-      filter: prev.contacts.filter(el =>
-        el.name.toLowerCase().includes(filterQuery.toLowerCase())
-      ),
-    }));
+  changeFilterValue = filterQuery => {
+    this.setState({ filter: filterQuery });
   };
 
   handleDelete = id => {
@@ -56,19 +37,28 @@ class UserList extends Component {
     }));
   };
 
+  getFilteredContacts = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
   render() {
+    const filtered = this.getFilteredContacts();
     return (
       <div>
         <h1>Phonebook</h1>
         <Form createUser={this.createUser} />
 
         <h2>Contacts</h2>
-        <FindName filterContacts={this.filterContacts} />
-        <ContactItem
-          filter={this.state.filter}
-          contacts={this.state.contacts}
-          handleDelete={this.handleDelete}
+        <FindName
+          changeFilterValue={this.changeFilterValue}
+          value={this.state.filter}
         />
+        {filtered.length > 0 && (
+          <ContactItems contacts={filtered} handleDelete={this.handleDelete} />
+        )}
       </div>
     );
   }

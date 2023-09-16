@@ -1,9 +1,9 @@
 import React from 'react';
 import Contacts from './ContactItem.syled';
-const ContactItem = ({ filter, contacts, handleDelete }) => {
+const ContactItems = ({ contacts, handleDelete }) => {
   return (
     <Contacts>
-      {(filter ?? contacts).map(el => {
+      {contacts.map(el => {
         return (
           <li key={el.id}>
             {el.name}: {el.number}
@@ -15,4 +15,4 @@ const ContactItem = ({ filter, contacts, handleDelete }) => {
   );
 };
 
-export default ContactItem;
+export default ContactItems;
